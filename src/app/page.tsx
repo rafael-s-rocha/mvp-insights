@@ -1,66 +1,114 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { APP_NAME } from "@/lib/appConfig";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="container" style={{ paddingTop: 48 }}>
+      <header className="topbar" style={{ marginBottom: 18 }}>
+        <div className="brand">
+          <h2>{APP_NAME}</h2>
+          <small>Insights diários simples para decisões melhores</small>
+        </div>
+
+        <div className="actions">
+          <Link href="/auth" className="btn btn-ghost">
+            Entrar
+          </Link>
+          <Link href="/auth" className="btn btn-primary">
+            Criar conta
+          </Link>
+        </div>
+      </header>
+
+      <section className="section">
+        <div className="card" style={{ padding: 22 }}>
+          <h1 style={{ fontSize: 34, lineHeight: 1.1, marginBottom: 10 }}>
+            Resumo diário do seu negócio em <span className="accentText">2 minutos</span>.
+          </h1>
+
+          <p className="muted" style={{ fontSize: 16, marginBottom: 18 }}>
+            Lance faturamento e pedidos do dia e acompanhe meta, ticket médio e alertas de tendência
+            sem planilhas complicadas.
           </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <Link href="/auth" className="btn btn-primary">
+              Começar agora
+            </Link>
+            <Link href="/auth" className="btn btn-ghost">
+              Já tenho conta
+            </Link>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: 12,
+              marginTop: 18,
+            }}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="card" style={{ padding: 14 }}>
+              <div className="label">📈 Meta do mês</div>
+              <div className="muted" style={{ marginTop: 6 }}>
+                Veja progresso real e ritmo projetado para bater a meta.
+              </div>
+            </div>
+
+            <div className="card" style={{ padding: 14 }}>
+              <div className="label">🧾 Ticket médio</div>
+              <div className="muted" style={{ marginTop: 6 }}>
+                Compare o último dia com a semana e com 4 semanas.
+              </div>
+            </div>
+
+            <div className="card" style={{ padding: 14 }}>
+              <div className="label">⚠️ Alertas simples</div>
+              <div className="muted" style={{ marginTop: 6 }}>
+                Detecte quedas fora do normal e ajuste rápido.
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="section">
+        <div className="grid cards">
+          <div className="card" style={{ padding: 18 }}>
+            <div className="label">Para quem é</div>
+            <div className="value" style={{ fontSize: 18 }}>
+              Pequenos e-commerces e lojas
+            </div>
+            <div className="muted" style={{ marginTop: 8 }}>
+              Ideal para quem quer acompanhamento diário sem montar dashboards complexos.
+            </div>
+          </div>
+
+          <div className="card" style={{ padding: 18 }}>
+            <div className="label">Como funciona</div>
+            <div className="value" style={{ fontSize: 18 }}>
+              Lançar dia → ver insights
+            </div>
+            <div className="muted" style={{ marginTop: 8 }}>
+              Em poucos cliques você registra o dia e o sistema atualiza tudo automaticamente.
+            </div>
+          </div>
+
+          <div className="card" style={{ padding: 18 }}>
+            <div className="label">Privacidade</div>
+            <div className="value" style={{ fontSize: 18 }}>
+              Você controla seus dados
+            </div>
+            <div className="muted" style={{ marginTop: 8 }}>
+              Cada negócio tem seu login e seus dados ficam isolados.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="muted" style={{ padding: "18px 0", textAlign: "center" }}>
+        © {new Date().getFullYear()} {APP_NAME}.
+      </footer>
+    </main>
   );
 }
